@@ -1,14 +1,11 @@
 import Sequelize, { Model } from 'sequelize';
 
 
-class Cliente extends Model {
+class Restaurante extends Model {
   static init(sequelize) {
     super.init(
       {
         name: Sequelize.STRING,
-        endereço: Sequelize.STRING,
-        telefone: Sequelize.STRING,
-        restaurante_id: Sequelize.INTEGER,
       },
       {
         sequelize,
@@ -17,4 +14,4 @@ class Cliente extends Model {
     return this;
   }
 }
-export default Cliente;
+export default Restaurante;

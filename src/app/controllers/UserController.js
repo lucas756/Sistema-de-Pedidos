@@ -12,6 +12,8 @@ class UserController {
       password: Yup.string()
         .required()
         .min(6),
+      adm: Yup.boolean(),
+      restaurante_id: Yup.number(),
     });
 
     if (!(await schema.isValid(req.body))) {
@@ -45,6 +47,7 @@ class UserController {
       confirmPassword: Yup.string().when('password', (password, field) =>
         password ? field.required().oneOf([Yup.ref('password')]) : field
       ),
+      restaurante_id: Yup.number(),
     });
 
     if (!(await schema.isValid(req.body))) {
@@ -54,6 +57,9 @@ class UserController {
     const { email, oldPassword } = req.body;
 
     const user = await User.findByPk(req.userId);
+
+    console.log(user, '<<<<<<<<<<<<<<<<<<<<<<<<<<');
+    
 
     if (email && email !== user.email) {
       const userExists = await User.findOne({ where: { email } });

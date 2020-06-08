@@ -6,6 +6,7 @@ import UserController from './app/controllers/UserController';
 import SessionController from './app/controllers/SessionController';
 import ClienteController from './app/controllers/ClienteController';
 import PedidoController from './app/controllers/PedidoController';
+import RestauranteController from './app/controllers/RestauranteController';
 
 import authMiddleware from './app/middlewares/auth';
 
@@ -23,6 +24,8 @@ routes.post('/pedidos', PedidoController.store);
 routes.get('/pedidos', PedidoController.index);
 
 routes.put('/pedidos/:id', PedidoController.update);
+
+routes.post('/restaurante', RestauranteController.store);
 
 
 

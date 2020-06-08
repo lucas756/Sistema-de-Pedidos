@@ -21,6 +21,13 @@ module.exports = {
         allowNull: false,
         unique: false,
       },
+      restaurante_id: {
+        type: Sequelize.INTEGER,
+        references: { model: 'restaurante', key: 'id' },
+        onUpdate: 'CASCADE',
+        onDelete: 'SET NULL',
+        allowNull: false,
+      },
       created_at: {
         type: Sequelize.DATE,
         allowNull: false,

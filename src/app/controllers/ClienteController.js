@@ -1,6 +1,6 @@
 import * as Yup from 'yup';
 import Cliente from '../models/Cliente';
-
+import User from '../models/User';
 
 class ClienteController {
   async store(req, res) {
@@ -15,7 +15,9 @@ class ClienteController {
       return res.status(400).json({ error: 'Validation fails' });
     }
 
-    const clienteExists = await Cliente.findOne({ where: { telefone: req.body.telefone } });
+    const user = await User.findOne({where: { id: req.userId }});
+
+    const clienteExists = await Cliente.findOne({ where: { telefone: req.body.telefone, restaurante_id: user.restaurante_id } });
 
     if (clienteExists) {
       return res.json(clienteExists);

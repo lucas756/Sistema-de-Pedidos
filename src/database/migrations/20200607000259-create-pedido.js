@@ -9,7 +9,7 @@ module.exports = {
       },
       restaurante_id: {
         type: Sequelize.INTEGER,
-        references: { model: 'users', key: 'id' },
+        references: { model: 'restaurante', key: 'id' },
         onUpdate: 'CASCADE',
         onDelete: 'SET NULL',
         allowNull: false,
