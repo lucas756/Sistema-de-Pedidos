@@ -13,11 +13,12 @@ import authMiddleware from './app/middlewares/auth';
 const routes = new Router();
 const upload = multer(multerConfig);
 
-routes.post('/users', UserController.store);
+routes.post('/restaurante', RestauranteController.store);
 routes.post('/sessions', SessionController.store);
 
 routes.use(authMiddleware);
 
+routes.post('/users', UserController.store);
 routes.put('/users', UserController.update);
 routes.post('/clientes', ClienteController.store);
 routes.post('/pedidos', PedidoController.store);
@@ -25,7 +26,6 @@ routes.get('/pedidos', PedidoController.index);
 
 routes.put('/pedidos/:id', PedidoController.update);
 
-routes.post('/restaurante', RestauranteController.store);
 
 
 
