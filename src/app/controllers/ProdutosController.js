@@ -35,7 +35,7 @@ class ProdutoController {
     }
 
     async buscarProdutos(req, res) {
-        const { page = 1 } = req.query
+        const { page = 1 } = req.query 
         let idUser = await User.findOne({
             where: {
                 id: req.userId
