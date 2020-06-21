@@ -1,11 +1,11 @@
 require('dotenv/config');
 
 module.exports = {
-  dialect: 'postgres',
+  dialect: 'mysql',
   host: 'localhost',
-  username: 'postgres',
+  username: 'root',
   password: 'root',
-  database: 'pedido',
+  database: 'base_pedidos',
   define: {
     timestamps: true,
     underscored: true,

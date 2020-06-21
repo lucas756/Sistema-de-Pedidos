@@ -25,6 +25,11 @@ class RestauranteController {
       return res.status(400).json({ error: 'Validation fails' });
     }
 
+    const userExists = await User.findOne({ where: { email: req.body.email_empresa } });
+
+    if (userExists) {
+      return res.status(400).json({ error: 'User already exists.' });
+    }
 
     const {
       name,
@@ -41,14 +46,9 @@ class RestauranteController {
       restaurante_id: id
     }
 
-    await User.create(formUsuario);
+    await User.create(formUsuario)
 
-    return res.json({
-      id,
-      name,
-      email_empresa,
-      senha_empresa,
-    });
+    return res.json('Empresa cadastrada com sucesso!')
   }
 }
 

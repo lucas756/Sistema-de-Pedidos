@@ -16,7 +16,7 @@ class PedidoController {
 
     if (!(await schema.isValid(req.body))) {
       return res.status(400).json({ error: 'Validation fails' });
-    }    
+    }
 
     const { id, restaurante_id, cliente_id, descricao_pedido, situacao } = await Pedido.create(req.body);
 
@@ -30,20 +30,25 @@ class PedidoController {
   }
 
   async index(req, res) {
+
+    let user
+    await User.findOne({ where: { id: req.userId } }).then((resp) => {
+      user = resp.dataValues.restaurante_id
+    })
+
     const pedidos = await Pedido.findAll({
-        where: { restaurante_id: req.userId, situacao: false }
+      where: { restaurante_id: user}
     })
     return res.json(pedidos);
   }
 
-  async update(req, res){
+  async update(req, res) {
     const pedidos = await Pedido.findByPk(req.params.id);
 
-    if(pedidos.situacao === true) {
-      return res.status(401).json({Error: 'o pedido já está pronto'})
-    }  
-    
-    
+    if (pedidos.situacao === true) {
+      return res.status(401).json({ Error: 'o pedido já está pronto' })
+    }
+
     pedidos.situacao = true;
 
     await pedidos.save();
@@ -52,4 +57,4 @@ class PedidoController {
   }
 }
 
-  export default new PedidoController();
+export default new PedidoController();
