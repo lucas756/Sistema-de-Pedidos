@@ -75,14 +75,13 @@ class PedidoController {
     return res.json(pedidos);
   }
 
-  async update(req, res){
+  async update(req, res) {
     const pedidos = await Pedido.findByPk(req.params.id);
 
-    if(pedidos.situacao === true) {
-      return res.status(401).json({Error: 'o pedido já está pronto'})
-    }  
-    
-    
+    if (pedidos.situacao === true) {
+      return res.status(401).json({ Error: 'o pedido já está pronto' })
+    }
+
     pedidos.situacao = true;
 
     await pedidos.save();
@@ -113,4 +112,4 @@ class PedidoController {
   }
 }
 
-  export default new PedidoController();
+export default new PedidoController();

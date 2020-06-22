@@ -9,29 +9,25 @@ import PedidoController from './app/controllers/PedidoController';
 import RestauranteController from './app/controllers/RestauranteController';
 
 import authMiddleware from './app/middlewares/auth';
+import ProdutosController from './app/controllers/ProdutosController';
 
 const routes = new Router();
 const upload = multer(multerConfig);
 
-routes.post('/sessions', SessionController.store);
 routes.post('/restaurante', RestauranteController.store);
-routes.post('/users', UserController.store);
-
-
+routes.post('/sessions', SessionController.store);
 routes.use(authMiddleware);
-
+routes.post('/users', UserController.store);
+routes.post('/novoproduto', ProdutosController.criarPedido);
+routes.get('/buscarProdutos', ProdutosController.buscarProdutos);
+routes.get('/users', UserController.index);
+routes.post('/users', UserController.store);
 routes.put('/users', UserController.update);
 routes.post('/clientes', ClienteController.store);
 routes.post('/pedidos', PedidoController.store);
 routes.get('/pedidos', PedidoController.index);
 routes.get('/pedidos/:id', PedidoController.show);
-
 routes.put('/pedidos/:id', PedidoController.update);
-
-
 routes.get('/clientes', ClienteController.index);
-
-
-
 
 export default routes;

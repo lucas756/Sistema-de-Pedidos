@@ -7,9 +7,10 @@ import Restaurante from '../app/models/Restaurante';
 
 
 import databaseConfig from '../config/database';
+import Produtos from '../app/models/Produtos';
 
 
-const models = [User, Cliente, Pedido, Restaurante];
+const models = [User, Cliente, Pedido, Restaurante, Produtos];
 
 class Database {
   constructor() {

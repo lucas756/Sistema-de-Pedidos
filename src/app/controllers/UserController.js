@@ -2,8 +2,21 @@ import * as Yup from 'yup';
 import User from '../models/User';
 
 
+<<<<<<< HEAD
 class UserController {;
   
+=======
+class UserController {
+  async index(req, res) {
+    const user = await User.findAll({
+      where: {
+        email: req.body.email
+      }
+    })
+    return res.json(user);
+  }
+
+>>>>>>> 16df0447fd24e29e645c3db0bfa4675ca23b4388
   async store(req, res) {
 
   
@@ -30,7 +43,6 @@ class UserController {;
     }
 
     const { id, name, email, provider } = await User.create(req.body);
-
     return res.json({
       id,
       name,
@@ -61,8 +73,6 @@ class UserController {;
 
     const user = await User.findByPk(req.userId);
 
-    console.log(user, '<<<<<<<<<<<<<<<<<<<<<<<<<<');
-    
 
     if (email && email !== user.email) {
       const userExists = await User.findOne({ where: { email } });
