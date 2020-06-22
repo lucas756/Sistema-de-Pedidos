@@ -16,5 +16,8 @@ class Pedidos extends Model {
     );
     return this;
   }
+  static associate(models) {
+    this.belongsTo(models.Cliente, { foreignKey: 'cliente_id', as: 'cliente' });
+  }
 }
 export default Pedidos;

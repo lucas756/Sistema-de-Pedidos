@@ -11,11 +11,6 @@ class RestauranteController {
     });
 
     
-    const user = await User.findOne({where: { id: req.userId }});
-
-    if(user.adm === false){
-      return res.status(401).json({Error: 'Você precisa ser um adm para cadastrar um restaurante'});
-    }
     
 
     if (!(await schema.isValid(req.body))) {
@@ -29,5 +24,5 @@ class RestauranteController {
     });
   }
 }
-
+ 
   export default new RestauranteController();

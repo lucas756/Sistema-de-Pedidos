@@ -2,8 +2,11 @@ import * as Yup from 'yup';
 import User from '../models/User';
 
 
-class UserController {
+class UserController {;
+  
   async store(req, res) {
+
+  
     const schema = Yup.object().shape({
       name: Yup.string().required(),
       email: Yup.string()
@@ -12,7 +15,7 @@ class UserController {
       password: Yup.string()
         .required()
         .min(6),
-      adm: Yup.boolean(),
+      adm: Yup.boolean(), 
       restaurante_id: Yup.number(),
     });
 

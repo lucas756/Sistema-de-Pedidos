@@ -5,7 +5,7 @@ module.exports = {
   host: 'localhost',
   username: 'postgres',
   password: 'docker',
-  database: 'pedidos',
+  database: 'base_pedidos',
   define: {
     timestamps: true,
     underscored: true,

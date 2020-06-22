@@ -16,5 +16,6 @@ class Cliente extends Model {
     );
     return this;
   }
+  
 }
 export default Cliente;
