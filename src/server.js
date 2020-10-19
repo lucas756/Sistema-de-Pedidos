@@ -1,4 +1,4 @@
 import app from './app';
 
-
-app.listen(8080);
+const port = 8080
+app.listen(port);
