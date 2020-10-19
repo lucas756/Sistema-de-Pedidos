@@ -5,7 +5,8 @@
   "license": "MIT",
   "scripts": {
     "dev": "nodemon src/server.js",
-    "start": "node scr/server.js"
+    "start": "node scr/server.js",
+    "migration": "yarn sequelize db:migrate"
   },
   "devDependencies": {
     "nodemon": "^2.0.2",
