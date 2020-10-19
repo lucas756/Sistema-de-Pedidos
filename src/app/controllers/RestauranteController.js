@@ -19,13 +19,7 @@ class RestauranteController {
       email_empresa: Yup.string().required(),
       senha_empresa: Yup.string().required(),
     });
-
-<<<<<<< HEAD
-    
-    
-=======
->>>>>>> 16df0447fd24e29e645c3db0bfa4675ca23b4388
-
+ 
     if (!(await schema.isValid(req.body))) {
       return res.status(400).json({ error: 'Validation fails' });
     }
@@ -56,10 +50,7 @@ class RestauranteController {
     return res.json('Empresa cadastrada com sucesso!')
   }
 }
-<<<<<<< HEAD
+
  
   export default new RestauranteController();
-=======
 
-export default new RestauranteController();
->>>>>>> 16df0447fd24e29e645c3db0bfa4675ca23b4388

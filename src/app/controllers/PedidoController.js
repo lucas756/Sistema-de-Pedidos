@@ -18,6 +18,20 @@ class PedidoController {
       return res.status(400).json({ error: 'Validation fails' });
     }  
 
+    const numero = req.body.cliente_id;
+
+    const telefone = await Cliente.findOne({
+      where: {
+        telefone: numero
+      }
+    });
+
+    if( telefone === null){
+      return res.status(400).json({ error: 'O cliente não existe' });
+    }
+
+    req.body.cliente_id = telefone.dataValues.id;
+
     const user = await User.findOne({
       where: {
         id: req.userId
@@ -77,7 +91,7 @@ class PedidoController {
 
   async update(req, res) {
     const pedidos = await Pedido.findByPk(req.params.id);
-
+      console.log(pedidos);
     if (pedidos.situacao === true) {
       return res.status(401).json({ Error: 'o pedido já está pronto' })
     }
